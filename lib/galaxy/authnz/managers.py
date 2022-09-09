@@ -332,6 +332,7 @@ class AuthnzManager:
                     f"Redirecting to the `{provider}` identity provider for authentication",
                     backend.authenticate(trans, idphint),
                 )
+            log.debug("bbbbbbbbbbbbbbaaaaaaaacccccccccckkkkkkkkkkkkk")
             return (
                 True,
                 f"Redirecting to the `{provider}` identity provider for authentication",
@@ -347,6 +348,7 @@ class AuthnzManager:
             success, message, backend = self._get_authnz_backend(provider, idphint=idphint)
             if success is False:
                 return False, message, (None, None)
+            log.debug("hhhhhhelllllllllllooooooooooooooo222222222222")
             return success, message, backend.callback(state_token, authz_code, trans, login_redirect_url)
         except exceptions.AuthenticationFailed:
             raise

@@ -663,6 +663,7 @@ class UserSerializer(base.ModelSerializer, deletable.PurgableSerializerMixin):
                 # 'update_time',
                 # 'create_time',
                 "is_admin",
+                'access_token',
                 "total_disk_usage",
                 "nice_total_disk_usage",
                 "quota_percent",
@@ -696,6 +697,7 @@ class UserSerializer(base.ModelSerializer, deletable.PurgableSerializerMixin):
                 "quota": lambda i, k, **c: self.user_manager.quota(i, total=True),
                 "quota_bytes": lambda i, k, **c: self.user_manager.quota_bytes(i),
                 "tags_used": lambda i, k, **c: self.user_manager.tags_used(i),
+                'access_token': lambda i, k, **c: i.custos_auth[0].access_token,
             }
         )
 
@@ -742,7 +744,7 @@ class CurrentUserSerializer(UserSerializer):
         # TODO: might be better as sep. Serializer class
         usage = 0
         percent = None
-
+        log.debug("managerrrrrrrrrrrrrrr???????")
         history = trans.history
         if history:
             usage = self.app.quota_agent.get_usage(trans, history=trans.history)

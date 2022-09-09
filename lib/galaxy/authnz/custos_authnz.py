@@ -109,7 +109,7 @@ class CustosAuthnz(IdentityProvider):
         refresh_expiration_time = (
             (datetime.now() + timedelta(seconds=token["refresh_expires_in"])) if "refresh_expires_in" in token else None
         )
-
+        log.debug("ccaaaalllllbaccckkk")
         # Get nonce from token['id_token'] and validate. 'nonce' in the
         # id_token is a hash of the nonce stored in the NONCE_COOKIE_NAME
         # cookie.

@@ -1,0 +1,11 @@
+<tool id="debug_token_tool" name="debug token tool" version="1.0.0">
+  <description>for debugging only</description>
+  <command>
+python '$__tool_directory__/debug_token_tool.py'
+  </command>
+  <inputs>
+  </inputs>
+  <help>
+
+  </help>
+</tool>
